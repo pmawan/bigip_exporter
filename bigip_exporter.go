@@ -17,7 +17,7 @@ var (
 )
 
 func listen(exporterBindAddress string, exporterBindPort int) {
-	http.Handle("/metrics", prometheus.Handler())
+	http.Handle("/metrics", promhttp.Handler())
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`<html>
 			<head><title>BIG-IP Exporter</title></head>
